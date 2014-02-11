@@ -9,7 +9,7 @@ $(document).ready(function(){
 
 		$.each(pairArray, function(index, pair){
 			pair.setDoubleWall();
-			// pair.renderTableData();
+			pair.setSortable();
 		})
 	});
 
@@ -126,4 +126,7 @@ var BtcPair = function(){
 
 			});
 		};
+	this.setSortable = function(){
+		$("#pairs").tablesorter(); 
+	}
 }
