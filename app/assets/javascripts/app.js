@@ -13,7 +13,7 @@ $(document).ready(function(){
 		})
 	});
 
-  $("#pairs").tablesorter();
+  // $("#pairs").tablesorter();
 
 })
 
