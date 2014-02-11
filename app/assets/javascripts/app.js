@@ -70,6 +70,7 @@ var BtcPair = function(){
 			})
 
 			self.doubleWall = _.reduce(doubleSellArray, function(memo, num){return memo + num;}, 0);
+			self.renderTableData();
 
 			});
 		};
