@@ -13,6 +13,8 @@ $(document).ready(function(){
 		})
 	});
 
+  $("#cryptsy").tablesorter();
+
 })
 
 //Parsing cryptsy responses
