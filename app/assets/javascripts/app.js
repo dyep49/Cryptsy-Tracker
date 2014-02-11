@@ -9,11 +9,13 @@ $(document).ready(function(){
 
 		$.each(pairArray, function(index, pair){
 			pair.setDoubleWall();
-	});
+		});
 
-  // $("#pairs").tablesorter();
+  $("#pairs").tablesorter();
 
 })
+})
+
 
 //Parsing cryptsy responses
 
@@ -48,8 +50,8 @@ var BtcPair = function(){
 		newRow.append('<td>' + self.secondWall + '</td>');
 		newRow.append('<td>' + self.thirdWall + '</td>');
 		newRow.append('<td>' + self.fourthWall + '</td>');
-
-		$('tbody').append(newRow)
+		$('tbody').append(newRow);
+		$("#pairs").trigger("update");
 	};
 
 
