@@ -9,7 +9,14 @@ $(document).ready(function(){
 
 		$.each(pairArray, function(index, pair){
 			pair.setDoubleWall();
-			pair.setSortable();
+
+			if _.last(pairArray) === pair {
+				setTimeout(function(){
+					$("#pairs").tablesorter(); 
+					alert("tables are now sortable");
+				}, 5000)
+			}
+
 		})
 	});
 
