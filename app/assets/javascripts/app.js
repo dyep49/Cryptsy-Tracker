@@ -10,7 +10,7 @@ $(document).ready(function(){
 		$.each(pairArray, function(index, pair){
 			pair.setDoubleWall();
 
-			if _.last(pairArray) === pair {
+			if (_.last(pairArray) === pair) {
 				setTimeout(function(){
 					$("#pairs").tablesorter(); 
 					alert("tables are now sortable");
@@ -133,7 +133,4 @@ var BtcPair = function(){
 
 			});
 		};
-	this.setSortable = function(){
-		$("#pairs").tablesorter(); 
-	}
 }
