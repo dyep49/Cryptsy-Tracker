@@ -1,11 +1,13 @@
 var pairArray = []
+width = 0
 
 
 $(document).ready(function(){
 
 	$.getJSON('/orderbook', function(data){
 		console.log("Success");
-		fetchBtcPairs(data)
+		fetchBtcPairs(data);
+		$('.progress-bar').attr('aria-valuemax', pairArray.length)
 
 		$.each(pairArray, function(index, pair){
 			pair.setDoubleWall();
@@ -49,6 +51,8 @@ var BtcPair = function(){
 		newRow.append('<td>' + self.thirdWall + '</td>');
 		newRow.append('<td>' + self.fourthWall + '</td>');
 		$('tbody').append(newRow);
+		width +=1
+		$('.progress-bar').css('width', width + '%' )
 		$("#pairs").trigger("update");
 	};
 
