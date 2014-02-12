@@ -16,11 +16,11 @@ class HomeController < ApplicationController
 	end
 
 	def market
-		cryptsy = Cryptsy::API::Client.new(ENV['CRYPTSY_PUBLIC_KEY'], ENV['CRYPTSY_PRIVATE_KEY'])
+		cryptsy = Cryptsy::API::Client.new(ENV["CRYPTSY_PUBLIC_KEY"], ENV["CRYPTSY_PRIVATE_KEY"])
 		respond_to do |format|
 			format.json do 
 				binding.pry
-				response = cryptsy.marketdata(params["pairId"].to_s)
+				response = cryptsy.marketdata(params["pairId"].to_i)
 				parsed_response = response["return"]["markets"].values[0]
 				render json: parsed_response.to_json
 			end
@@ -28,10 +28,10 @@ class HomeController < ApplicationController
 	end
 
 	def depth
-		cryptsy = Cryptsy::API::Client.new(ENV['CRYPTSY_PUBLIC_KEY'], ENV['CRYPTSY_PRIVATE_KEY'])
+		cryptsy = Cryptsy::API::Client.new(ENV["CRYPTSY_PUBLIC_KEY"], ENV["CRYPTSY_PRIVATE_KEY"])
 		respond_to do |format|
 			format.json do 
-				response = cryptsy.depth(params["pairId"].to_s)
+				response = cryptsy.depth(params["pairId"].to_i)
 				parsed_response = response["return"]["sell"]
 				render json: parsed_response.to_json
 			end

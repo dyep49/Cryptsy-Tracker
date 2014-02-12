@@ -10,10 +10,8 @@ $(document).ready(function(){
 		$.each(pairArray, function(index, pair){
 			pair.setDoubleWall();
 		});
-
   $("#pairs").tablesorter();
-
-})
+	})
 })
 
 
