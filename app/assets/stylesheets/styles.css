@@ -1,0 +1,10 @@
+th.headerSortDown { 
+    background-image: url(/app/assets/images/images/green-desc.gif); 
+    background-color: lightblue; 
+} 
+
+
+th.headerSortUp { 
+    background-image: url(green-asc.gif); 
+    background-color: lightblue; 
+} 

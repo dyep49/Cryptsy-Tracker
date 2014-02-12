@@ -1,18 +1,17 @@
 var pairArray = []
 width = 0
-
+iteration = 0
 
 $(document).ready(function(){
+  $("#pairs").tablesorter({cssAsc: "headerSortUp", cssDesc: "headerSortDown"});
+	
 
 	$.getJSON('/orderbook', function(data){
 		console.log("Success");
 		fetchBtcPairs(data);
-		$('.progress-bar').attr('aria-valuemax', pairArray.length)
-
 		$.each(pairArray, function(index, pair){
 			pair.setDoubleWall();
 		});
-  $("#pairs").tablesorter();
 	})
 })
 
@@ -21,6 +20,7 @@ $(document).ready(function(){
 
 function fetchBtcPairs(pairs){
 	console.log('fetching');
+	$('#progress').text('Fetching BTC Pairs')
 	$.each(pairs.return.markets, function(index, pair){
 		if (pair.secondarycode === "BTC") {
 			var newPair = new BtcPair()
@@ -51,8 +51,10 @@ var BtcPair = function(){
 		newRow.append('<td>' + self.thirdWall + '</td>');
 		newRow.append('<td>' + self.fourthWall + '</td>');
 		$('tbody').append(newRow);
-		width +=1
-		$('.progress-bar').css('width', width + '%' )
+		width += ((1 / pairArray.length) * 100);
+		iteration += 1;
+		$('.progress-bar').css('width', width + '%' );
+		$('#progress').text("Rendered " + iteration + " of " + pairArray.length);
 		$("#pairs").trigger("update");
 	};
 
