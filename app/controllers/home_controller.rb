@@ -31,6 +31,7 @@ class HomeController < ApplicationController
 		cryptsy = Cryptsy::API::Client.new(ENV["CRYPTSY_PUBLIC_KEY"], ENV["CRYPTSY_PRIVATE_KEY"])
 		respond_to do |format|
 			format.json do 
+				# binding.pry
 				response = cryptsy.depth(params["pairId"].to_i)
 				parsed_response = response["return"]["sell"]
 				render json: parsed_response.to_json

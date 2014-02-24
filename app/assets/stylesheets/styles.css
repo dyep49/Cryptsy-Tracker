@@ -1,10 +1,21 @@
 th.headerSortDown { 
-    background-image: url(/app/assets/images/images/green-desc.gif); 
+    background-image: url(images/white-desc.gif); 
     background-color: lightblue; 
 } 
 
 
 th.headerSortUp { 
-    background-image: url(green-asc.gif); 
+    background-image: url(images/white-asc.gif); 
     background-color: lightblue; 
+} 
+
+th.header { 
+    background-image: url(../img/white-unsorted.gif);     
+    cursor: pointer; 
+    font-weight: bold; 
+    background-repeat: no-repeat; 
+    background-position: center left; 
+    padding-left: 20px; 
+    border-right: 1px solid #dad9c7; 
+    margin-left: -1px; 
 } 

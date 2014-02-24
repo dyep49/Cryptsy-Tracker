@@ -3,7 +3,7 @@ width = 0
 iteration = 0
 
 $(document).ready(function(){
-  $("#pairs").tablesorter({cssAsc: "headerSortUp", cssDesc: "headerSortDown"});
+  $("#pairs").tablesorter({cssAsc: "headerSortUp", cssDesc: "headerSortDown", cssHeader: "header"});
 	
 
 	$.getJSON('/orderbook', function(data){
@@ -13,6 +13,9 @@ $(document).ready(function(){
 			pair.setDoubleWall();
 		});
 	})
+		.fail(function(){
+			console.log("fetching failed")
+		})
 })
 
 
@@ -128,6 +131,10 @@ var BtcPair = function(){
 
 			self.renderTableData();
 
-			});
+			})
+				.fail(function(){
+					console.log("trying again")
+					self.setDoubleWall();
+				})
 		};
 }
